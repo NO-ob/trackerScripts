@@ -4,6 +4,7 @@
 // @version      1.0
 // @description  Autofill Game info from dlsite eng
 // @author       NO_ob
+// @icon         https://oppaiti.me/favicon.ico
 // @match        *://oppaiti.me/upload.php
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
