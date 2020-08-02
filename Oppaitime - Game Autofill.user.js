@@ -21,9 +21,9 @@
 function getDataFromHTML(htmlData){
     var newDiv = document.createElement("div");
     newDiv.innerHTML = htmlData;
-    document.getElementById("title").value = newDiv.querySelector("#work_name").children[0].text;
+    document.getElementById("title").value = newDiv.querySelector("#work_name > :first-child").text;
     document.getElementById("year").value = getTableData(newDiv.querySelectorAll("table#work_outline > tbody > tr"),"Release").textContent.split("/")[2];
-    document.getElementById("idols_0").value = newDiv.querySelector("#work_maker > tbody > tr >td > span.maker_name").textContent;
+    document.getElementById("idols_0").value = newDiv.querySelector(".maker_name").textContent;
     language(getTableData(newDiv.querySelectorAll("table#work_outline > tbody > tr"),"Language"));
     document.getElementById("image").value = "https:" + newDiv.getElementsByClassName("slider_item active")[0].children[0].getAttribute("src");
     document.getElementById("album_desc").value = newDiv.getElementsByClassName("work_parts type_text")[0].textContent;
@@ -51,7 +51,6 @@ function language(languageData){
             for (var i=0; i < langSpans.length ; i++){
                 languages[i] = langSpans[i].textContent;
             }
-            console.log(languages);
             document.querySelector("#release_desc").value = "Languages: " + languages;
         } else {
             if (langSpans[0].textContent == "English"){
