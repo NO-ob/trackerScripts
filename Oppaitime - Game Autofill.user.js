@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         OppaiTime - Game Autofill
+// @name         Oppaitime - Game Autofill
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  Autofill Game info from dlsite eng
