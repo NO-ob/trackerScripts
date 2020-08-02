@@ -58,9 +58,9 @@ function language(languageData){
             document.getElementById("release_desc").value = "Languages: " + languages;
 
         } else {
-            if (langSpans[0].text == "English"){
+            if (langSpans[0].textContent == "English"){
                 document.querySelector("select[name=lang] > option[value=English]").selected = true;
-            } else if (langSpans[0].text == "Japanese") {
+            } else if (langSpans[0].textContent == "Japanese") {
                 document.querySelector("select[name=lang] > option[value=Japanese]").selected = true;
             } else {
                 document.querySelector("select[name=lang] > option[value=None]").selected = true;
