@@ -20,18 +20,13 @@
 
 function getDataFromHTML(htmlData){
     var newDiv = document.createElement("div");
-    newDiv.style.visibility="hidden"
-    newDiv.setAttribute("id","dlsiteShit");
     newDiv.innerHTML = htmlData;
-    document.getElementById("upload").appendChild(newDiv);
-    document.getElementById("title").value = document.getElementById("work_name").children[0].text;
-    document.getElementById("year").value = getTableData(document.querySelectorAll("table#work_outline > tbody > tr"),"Release").textContent.split("/")[2];
-    document.getElementById("idols_0").value = document.querySelector("#work_maker > tbody > tr >td > span.maker_name").textContent;
-    language(getTableData(document.querySelectorAll("table#work_outline > tbody > tr"),"Language"));
-    document.getElementById("image").value = "https:" + document.getElementsByClassName("slider_item active")[0].children[0].getAttribute("src");
-    document.getElementById("album_desc").value = document.getElementsByClassName("work_parts type_text")[0].textContent;
-    document.getElementById("upload").removeChild(newDiv);
-
+    document.getElementById("title").value = newDiv.querySelector("#work_name").children[0].text;
+    document.getElementById("year").value = getTableData(newDiv.querySelectorAll("table#work_outline > tbody > tr"),"Release").textContent.split("/")[2];
+    document.getElementById("idols_0").value = newDiv.querySelector("#work_maker > tbody > tr >td > span.maker_name").textContent;
+    language(getTableData(newDiv.querySelectorAll("table#work_outline > tbody > tr"),"Language"));
+    document.getElementById("image").value = "https:" + newDiv.getElementsByClassName("slider_item active")[0].children[0].getAttribute("src");
+    document.getElementById("album_desc").value = newDiv.getElementsByClassName("work_parts type_text")[0].textContent;
 }
 
 function getShit(){
@@ -46,6 +41,7 @@ function getShit(){
 	});
 
 }
+
 function language(languageData){
     if(languageData != null){
        var langSpans = languageData.querySelectorAll("div.work_genre > a > span");
@@ -55,8 +51,8 @@ function language(languageData){
             for (var i=0; i < langSpans.length ; i++){
                 languages[i] = langSpans[i].textContent;
             }
-            document.getElementById("release_desc").value = "Languages: " + languages;
-
+            console.log(languages);
+            document.querySelector("#release_desc").value = "Languages: " + languages;
         } else {
             if (langSpans[0].textContent == "English"){
                 document.querySelector("select[name=lang] > option[value=English]").selected = true;
@@ -68,6 +64,7 @@ function language(languageData){
         }
     }
 }
+
 function getTableData(nodes, search){
     for (var i = 0; i < nodes.length; i++){
         if(nodes[i].children[0].textContent == search){
